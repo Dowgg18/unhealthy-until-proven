@@ -1,0 +1,30 @@
+[project]
+name = "proven"
+version = "0.1.0"
+description = "A health check has three outcomes, not two. Health<T> with measured / stale / unknown, a persistence rule that refuses to record 'I could not check', and coercion that will not collapse without you saying what unknown means."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = ["health-check", "observability", "monitoring", "reliability", "sre", "fail-safe"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.4"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/proven"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "SIM"]
